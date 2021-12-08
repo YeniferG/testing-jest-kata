@@ -56,8 +56,31 @@ test('Validation date', () => {
 });
 
 
-test('Validation illegal arguments', () => {
+describe('Validation illegal arguments', () => {
     //TODO: hacer las verificaciones
+    test('Argumento ilegal en el horario de entrada', () => {
+
+        const hourCloseError = 6;
+        const result = () => createEvent(weekday, week, openHour, hourCloseError);
+
+        expect(result).toThrow(Error);
+    });
+
+    test('Argumento ilegal para la semana, debe ser positivo', () => {
+
+        const weekError = -3;
+        const result = () => createEvent(weekday, weekError, openHour, closeHour);
+
+        expect(result).toThrow(Error);
+    });
+
+    test('Argumento ilegal dia de la semana', () => {
+
+        const weekdayError = 'jue';
+        const result = () => createEvent(weekdayError, week, openHour, closeHour);
+
+        expect(result).toThrow(Error);
+    });
 });
 
 
