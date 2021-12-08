@@ -39,7 +39,7 @@ test('Validation a event title and content basic', () => {
 test('Validation start date', () => {
     //TODO: hacer las verificaciones
     const date = getDateCalendar(numDay, currentDay);
-    
+
     const result = createEvent(weekday,week,openHour,closeHour);
 
     expect(result.start.toUTCString).toEqual(date.toUTCString);
@@ -47,6 +47,12 @@ test('Validation start date', () => {
 
 test('Validation date', () => {
    //TODO: hacer las verificaciones
+    const date = getDateCalendar(numDay, currentDay);
+    const dateResult = new Date(date).toLocaleDateString('es-ES', options);
+
+    const result = createEvent(weekday,week,openHour,closeHour);
+
+    expect(result.date).toEqual(dateResult);
 });
 
 
