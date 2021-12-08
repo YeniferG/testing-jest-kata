@@ -38,6 +38,11 @@ test('Validation a event title and content basic', () => {
 
 test('Validation start date', () => {
     //TODO: hacer las verificaciones
+    const date = getDateCalendar(numDay, currentDay);
+    
+    const result = createEvent(weekday,week,openHour,closeHour);
+
+    expect(result.start.toUTCString).toEqual(date.toUTCString);
 });
 
 test('Validation date', () => {
